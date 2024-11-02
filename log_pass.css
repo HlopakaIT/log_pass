@@ -1,0 +1,15 @@
+#form {
+    text-align: center;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-top: 150px;
+    display: block;
+    font-size: auto;
+}
+
+#userdata {
+    font-size: auto;
+    text-align: center;
+    margin: 0 auto;
+    display: inline;
+}
