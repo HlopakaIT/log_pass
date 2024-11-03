@@ -1,32 +1,27 @@
-const submit = document.getElementById("form");
+const form = document.getElementById("form");
 
-submit.addEventListener("submit", createTwoElements)
+form.addEventListener("submit", createTwoElements)
 
 function createTwoElements(event) {
     event.preventDefault()
 
-    const formData = new FormData(submit);
-
-    const data = Object.fromEntries(formData)
-    
-    const userData = document.getElementById("userdata")
-
-    if(document.querySelector("key-value")) {
-        for (const [key, value] of Object.entries(data)) {
-            const NewElement = document.querySelector("key-value")
-            const NewElementTwo = document.getElementById("pass")
-            newElement.innerHTML = `${key}: ${value}`;
-    }
-    }
+    const formData = new FormData(form);
+ 
+    const data = Object.fromEntries(formData);
+    const userData = document.getElementById("userdata");
 
     for (const [key, value] of Object.entries(data)) {
-        const newElement = document.createElement("p");
-        newElement.classList.add("key-value")
-        newElement.innerHTML = `${key}: ${value}`;
-        userData.append(newElement);
-}
-    
+        if(document.getElementById(key)) {
+            const newElement = document.getElementById(key);
+            newElement.innerHTML = `${key}: ${value}`;
+        } else {
+            const newElement = document.createElement("p");
+            newElement.id = key;
+            newElement.innerHTML = `${key}: ${value}`;
+            userData.append(newElement);
+        }
 
+    }
 
 }
 
@@ -61,7 +56,7 @@ function createTwoElements(event) {
 
 
 
-// for (const element of submit.elements) {
+// for (const element of form.elements) {
 //     if (!element.name)
 //         continue
 //     formData[element.name] = element.value
