@@ -5,99 +5,65 @@ submit.addEventListener("submit", createTwoElements)
 function createTwoElements(event) {
     event.preventDefault()
 
+    const formData = new FormData(submit);
 
-    if(document.getElementById("user")) {
-
-        const username = document.getElementById("username").value
-        const password = document.getElementById("password").value
-
-        const NewElement = document.getElementById("user")
-        const NewElementTwo = document.getElementById("pass")
-
-        NewElement.innerHTML = "login: " + username;
-        NewElementTwo.innerHTML = "password: " + password; 
-
-    } else {
-        const newElement = document.createElement("p");
-        const newElementTwo = document.createElement("p");
-
-        newElement.setAttribute( "id", "user" );
-        newElementTwo.setAttribute( "id", "pass" );
+    const data = Object.fromEntries(formData)
     
-        const username = document.getElementById("username").value
-        const password = document.getElementById("password").value
-    
-        newElement.innerHTML = "login: " + username;
-        newElementTwo.innerHTML = "password: " + password; 
-    
-        userdata.append(newElement);
-        userdata.append(newElementTwo);
+    const userData = document.getElementById("userdata")
+
+    if(document.querySelector("key-value")) {
+        for (const [key, value] of Object.entries(data)) {
+            const NewElement = document.querySelector("key-value")
+            const NewElementTwo = document.getElementById("pass")
+            newElement.innerHTML = `${key}: ${value}`;
     }
+    }
+
+    for (const [key, value] of Object.entries(data)) {
+        const newElement = document.createElement("p");
+        newElement.classList.add("key-value")
+        newElement.innerHTML = `${key}: ${value}`;
+        userData.append(newElement);
+}
+    
+
+
 }
 
 
+// if(document.getElementById("user")) {
+
+//     const username = document.getElementById("username").value
+//     const password = document.getElementById("password").value
+
+//     const NewElement = document.getElementById("user")
+//     const NewElementTwo = document.getElementById("pass")
+
+//     NewElement.innerHTML = "login: " + username;
+//     NewElementTwo.innerHTML = "password: " + password; 
+
+// } else {
+//     const newElement = document.createElement("p");
+//     const newElementTwo = document.createElement("p");
+
+//     newElement.setAttribute( "id", "user" );
+//     newElementTwo.setAttribute( "id", "pass" );
+
+//     const username = document.getElementById("username").value
+//     const password = document.getElementById("password").value
+
+//     newElement.innerHTML = "login: " + username;
+//     newElementTwo.innerHTML = "password: " + password; 
+
+//     userdata.append(newElement);
+//     userdata.append(newElementTwo);
+// }       
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // const bla = document.getElementById("bla");
-    // const blu = document.getElementById("blu");
-
-    // if(bla) {
-    //     data.remove();
-    //     datatwo.remove();
-    //     const data = document.createElement("p");
-    //     const datatwo = document.createElement("p");
-    //     data.innerHTML = "login: ";
-    //     datatwo.innerHTML = "password: ";
-    //     userdata.append(data);
-    //     userdata.append(datatwo);
-
-    // } else {
-        
-
-
-    //     data.setAttribute( "id", "bla" );
-    //     datatwo.setAttribute( "id", "blu");
-
-    //     const username = document.getElementById("username").value;
-    //     const password = document.getElementById("password").value;
-
-    //     data.innerHTML = "login: " + username;
-    //     datatwo.innerHTML = "password: " + password;
-
-    //     userdata.append(data);
-    //     userdata.append(datatwo);
-//     }
+// for (const element of submit.elements) {
+//     if (!element.name)
+//         continue
+//     formData[element.name] = element.value
 // }
 
-
-// const userdata = document.getElementById("userdata");
-// const data = document.createElement("p");
-// data.innerHTML = "Username:";
-// userdata.append(data);
-
-// const username = document.getElementById("username").value;
-// const password = document.getElementById("username").value;
-// console.log(username);
-// console.log(password);
