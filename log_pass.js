@@ -1,8 +1,8 @@
 const form = document.getElementById("form");
 
-form.addEventListener("submit", createTwoElements)
+form.addEventListener("submit", createElements)
 
-function createTwoElements(event) {
+function createElements(event) {
     event.preventDefault()
 
     const formData = new FormData(form);
@@ -12,13 +12,13 @@ function createTwoElements(event) {
 
     for (const [key, value] of Object.entries(data)) {
         if(document.getElementById(key)) {
-            const newElement = document.getElementById(key);
-            newElement.innerHTML = `${key}: ${value}`;
+            const keyElement = document.getElementById(key);
+            keyElement.innerHTML = `${key}: ${value}`;
         } else {
-            const newElement = document.createElement("p");
-            newElement.id = key;
-            newElement.innerHTML = `${key}: ${value}`;
-            userData.append(newElement);
+            const keyElement = document.createElement("p");
+            keyElement.id = key;
+            keyElement.innerHTML = `${key}: ${value}`;
+            userData.append(keyElement);
         }
 
     }
@@ -38,20 +38,20 @@ function createTwoElements(event) {
 //     NewElementTwo.innerHTML = "password: " + password; 
 
 // } else {
-//     const newElement = document.createElement("p");
-//     const newElementTwo = document.createElement("p");
+//     const keyElement = document.createElement("p");
+//     const keyElementTwo = document.createElement("p");
 
-//     newElement.setAttribute( "id", "user" );
-//     newElementTwo.setAttribute( "id", "pass" );
+//     keyElement.setAttribute( "id", "user" );
+//     keyElementTwo.setAttribute( "id", "pass" );
 
 //     const username = document.getElementById("username").value
 //     const password = document.getElementById("password").value
 
-//     newElement.innerHTML = "login: " + username;
-//     newElementTwo.innerHTML = "password: " + password; 
+//     keyElement.innerHTML = "login: " + username;
+//     keyElementTwo.innerHTML = "password: " + password; 
 
-//     userdata.append(newElement);
-//     userdata.append(newElementTwo);
+//     userdata.append(keyElement);
+//     userdata.append(keyElementTwo);
 // }       
 
 
